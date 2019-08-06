@@ -94,7 +94,7 @@
 </head>
 
 <body>
-  <span id="name"></span><input type="button" id="loginBtn" value="checking..." onclick="
+  <input type="button" id="loginBtn" value="checking...구글" onclick="
   if(this.value === 'Login'){
     gauth.signIn({
       scope:'https://www.googleapis.com/auth/calendar'
@@ -109,6 +109,8 @@
     });
   }
 ">
+<span id="name"></span>
+<p></p>
   <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
   <input type="button" id="authBtn" value="checking..." onclick="
       if(this.value === 'Login'){

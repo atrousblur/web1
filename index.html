@@ -7,9 +7,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="colors.js"></script>
   <script>
-    function ggcheckLoginStatus(){
+    function ggcheckLoginStatus() {
       var loginBtn = document.querySelector('#loginBtn');
-      if(gauth.isSignedIn.get()){
+      if (gauth.isSignedIn.get()) {
         console.log('logined');
         loginBtn.value = 'Logout';
       } else {
@@ -17,23 +17,23 @@
         loginBtn.value = 'Login';
       }
     }
-    function init(){
+
+    function init() {
       console.log('init');
       gapi.load('auth2', function() {
         console.log('auth2');
         window.gauth = gapi.auth2.init({
-          client_id:'274541617985-vsltdsqbgpb618pir54hoa77udvl8bun.apps.googleusercontent.com'
+          client_id: '274541617985-vsltdsqbgpb618pir54hoa77udvl8bun.apps.googleusercontent.com'
         })
-        gauth.then(function(){
+        gauth.then(function() {
           console.log('googleAuth success');
           ggcheckLoginStatus();
-        }, function(){
+        }, function() {
           console.log('googleAuth fail');
         });
       });
     }
   </script>
-
 
   <script>
     var checkLoginStatus = function(response) {
@@ -105,8 +105,8 @@
       });
     }
   ">
-<span id="name"></span>
-<p></p>
+
+  <p></p>
   <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
   <input type="button" id="authBtn" value="checking..." onclick="
       if(this.value === 'Login'){
@@ -198,7 +198,7 @@ nightDayHandler(this)">
     })();
   </script>
   <!--End of Tawk.to Script-->
-   <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 </body>
 
 </html>

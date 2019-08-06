@@ -6,35 +6,22 @@
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="colors.js"></script>
+  <meta name="google-signin-client_id" content="274541617985-vsltdsqbgpb618pir54hoa77udvl8bun.apps.googleusercontent.com">
   <script>
-    function checkLoginStatus(){
-      var loginBtn = document.querySelector('#loginBtn');
-      var nameTxt = document.querySelector('#name');
-      if(gauth.isSignedIn.get()){
-        console.log('logined');
-        loginBtn.value = 'Logout';
-        var profile = gauth.currentUser.get().getBasicProfile();
-        nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'</strong> ';
-      } else {
-        console.log('logouted');
-        loginBtn.value = 'Login';
-        nameTxt.innerHTML = '';
-      }
-    }
     function init(){
       console.log('init');
       gapi.load('auth2', function() {
         console.log('auth2');
-        window.gauth = gapi.auth2.init({
-          client_id:'274541617985-vsltdsqbgpb618pir54hoa77udvl8bun.apps.googleusercontent.com'
-        })
-        gauth.then(function(){
-          console.log('googleAuth success');
-          checkLoginStatus();
-        }, function(){
-          console.log('googleAuth fail');
-        });
       });
+    }
+  </script>
+  <script>
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+      console.log('Name: ' + profile.getName());
+      console.log('Image URL: ' + profile.getImageUrl());
+      console.log('Email: ' + profile.getEmail());
     }
   </script>
   <script>

@@ -27,10 +27,20 @@
     //    your app or not.
     //
     // These three cases are handled in the callback function.
+    var callback = function(response) {
+      console.log(response);
+      // statusChangeCallback(response);
+      if(response.status === 'connected'){
+        document.querySelector('#authBtn').value = 'Logout';
+      } else {
+        document.querySelector('#authBtn').value = 'Login';
+      }
+    }
+    FB.getLoginStatus(callback);
 
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
+    // FB.getLoginStatus(function(response) {
+    //   statusChangeCallback(response);
+    // });
 
   };
 
@@ -46,6 +56,22 @@
 </head>
 
 <body>
+  <input type="button" id="authBtn" value="checking..." onclick="
+      if(this.value === 'Login'){
+        // now logout
+        FB.login(function(res){
+          console.log('login =>', res);
+          checkLoginStatus(res);
+        });
+      } else {
+        // now login
+        FB.logout(function(res){
+          console.log('logout =>', res);
+          checkLoginStatus(res);
+        });
+      }
+  ">
+
   <h1><a href="#!welcome">WEB</a></h1>
   <input id="night_day" type="button" value="night" onclick="
 nightDayHandler(this)">
